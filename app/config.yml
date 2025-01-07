@@ -1,0 +1,11 @@
+# config.yaml
+profiles:
+  active: dev  # 激活的环境，可以是 dev, prod 或 test
+
+logging:
+  level: "INFO"   # 默认日志级别
+  file: "app.log" # 默认日志文件
+
+server:
+  host: "0.0.0.0"
+  port: 8000
