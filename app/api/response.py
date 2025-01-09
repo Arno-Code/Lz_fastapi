@@ -4,6 +4,7 @@ from starlette.background import BackgroundTask
 from starlette.responses import JSONResponse
 import time
 
+from app.api.status import ErrorCode
 
 
 class R:
@@ -13,7 +14,7 @@ class R:
             data: Union[dict, list, str] = None,
             msg: str = None,
             code: int = None,
-            status: Status = Status.SUCCESS,
+            status: ErrorCode = ErrorCode.SUCCESS,
             status_code: int = 200,
             headers: Mapping[str, str] | None = None,
             media_type: str | None = None,
@@ -57,4 +58,3 @@ class R:
             media_type=media_type,
             background=background,
         )
-

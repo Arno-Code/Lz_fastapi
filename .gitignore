@@ -3,3 +3,6 @@
 /workspace.xml
 .venv
 .idea
+/log/
+/logs/
+/uploads/
