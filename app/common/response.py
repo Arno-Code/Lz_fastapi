@@ -4,18 +4,18 @@ from starlette.background import BackgroundTask
 from starlette.responses import JSONResponse
 import time
 
-from app.api.status import ErrorCode
+from app.common.status import ErrorCode
 
 
 class R:
 
     @staticmethod
-    def success(
+    def ok(
             data: Union[dict, list, str] = None,
             msg: str = None,
             code: int = None,
             status: ErrorCode = ErrorCode.SUCCESS,
-            status_code: int = 200,
+            http_status_code: int = 200,
             headers: Mapping[str, str] | None = None,
             media_type: str | None = None,
             background: BackgroundTask | None = None,
@@ -27,20 +27,20 @@ class R:
                 "code": code or status.code,
                 "data": data,
             },
-            status_code=status_code,
+            status_code=http_status_code,
             headers=headers,
             media_type=media_type,
             background=background,
         )
 
     @staticmethod
-    def failure(
+    def fail(
             msg: str = None,
             code: int = None,
             error: Union[str, Exception] = None,
             data: Union[dict, list, str] = None,
-            status: Status = Status.FAILURE,
-            status_code: int = 200,
+            status: ErrorCode = ErrorCode.SUCCESS,
+            http_status_code: int = 200,
             headers: Mapping[str, str] | None = None,
             media_type: str | None = None,
             background: BackgroundTask | None = None,
@@ -53,7 +53,7 @@ class R:
                 "error": str(error),
                 "data": data,
             },
-            status_code=status_code,
+            status_code=http_status_code,
             headers=headers,
             media_type=media_type,
             background=background,
